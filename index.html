@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aqua Dream｜jQuery </title>
+
+<!-- swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12.0.0/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@12.0.0/swiper-bundle.min.js"></script>
+
+<link href="css/ex4.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/ex4.js"></script>
+</head>
+
+<body id="gototop">
+
+<header>
+    <!-- logo -->
+    <div class="logo">
+        <a href="#">
+            <img src="images/logos.png" alt="Aqua Dream logo">
+        </a>
+    </div>
+
+    <!-- menu -->
+    <div class="menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#1593dc"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+    </div>
+</header>
+
+<!-- nav -->
+<nav>
+    <a href="#">首頁</a>
+    <a href="#">作品</a>
+    <a href="#">聯絡</a>
+</nav>
+
+<!-- swiper -->
+<div class="swiper mySwiper">
+    
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="images/fgar1.jpg" alt="晴朗藍天與清新草地">
+            <div class="slide-title">Fresh Sky</div>
+        </div>
+        
+        <div class="swiper-slide">
+            <img src="images/fgar2.jpg" alt="透亮水面與泡泡" loading="lazy">
+            <div class="slide-title">Aqua Bubble</div>
+        </div>
+
+        <!-- 新增的第 3 張 -->
+    <div class="swiper-slide">
+        <img src="images/fgar3.jpg" alt="翠綠山丘與白雲" loading="lazy">
+        <div class="slide-title">Green Hills</div>
+    </div>
+   
+</div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<!-- section -->
+<section>
+    <h1>— 一起探索清透的數位夢境 —</h1>
+
+    <!-- article -->
+    <article>
+        <!-- content -->
+        <div class="content">
+            <div class="a_left">
+                <img src="images/dogham1.jpg" alt="關於 Frutiger Aero">
+            </div>
+            <div class="a_right">
+                <h2>Frutiger Aero &amp; jQuery 互動</h2>
+                <p>Frutiger Aero 是 2000 年代中期流行的復古未來風，以天空藍、草地綠、水泡泡與玻璃光澤營造清爽樂觀的氛圍。本範例結合 jQuery 的漢堡選單與頁籤切換，讓使用者點擊果凍按鈕就能看見內容滑順淡入，體驗 HTML、CSS 與 JavaScript 協作的魅力。</p>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div class="content">
+            <div class="a_left">
+                <img src="images/bgr1.jpg" alt="風格特色">
+            </div>
+            <div class="a_right">
+                <h2>Style features</h2>
+                <p>透明玻璃、水珠泡泡、漸層高光與圓潤邊角，是果凍質感的四大關鍵，讓畫面彷彿能輕輕按下去。</p>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div class="content">
+            <div class="a_left">
+                <img src="images/fgar5.jpg" alt="應用情境">
+            </div>
+            <div class="a_right">
+                <h2>When to use</h2>
+                <p>
+                    1. 想帶來清新、療癒的形象<br>
+                    2. 需要懷舊又現代的視覺效果<br>
+                    3. 主題與自然、科技相關
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <!-- aside -->
+    <aside>
+        <div class="list">關於</div>
+        <div class="list">風格</div>
+        <div class="list">應用</div>
+    </aside>
+</section>
+
+<!-- totop -->
+<div class="totopbt">
+    <a href="#gototop">top</a>
+</div>
+
+<!-- footer -->
+<footer>
+    &copy; 此為課堂學習範例使用，請勿轉用商用。
+</footer>
+
+</body>
+</html>

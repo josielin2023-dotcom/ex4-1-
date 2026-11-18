@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root{
+    --swiper-theme-color: rgba(0, 160, 230, 1);
+    --main-color: rgba(8, 84, 140, 1);          /* 深海藍文字 */
+    --secondary-color: rgba(120, 220, 255, 1);  /* 水藍 */
+    --aqua: rgba(60, 190, 255, 1);
+    --leaf: rgba(110, 215, 90, 1);
+    --glass: rgba(255, 255, 255, .38);
+    --glass-border: rgba(255, 255, 255, .85);
+    --shadow: 0 10px 30px rgba(0, 120, 190, .28);
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    color: rgba(8, 84, 140, 1);
+    font-family: "Nunito", "Segoe UI", "Microsoft JhengHei", sans-serif;
+
+    /* 天空 → 草地漸層 */
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,.75) 0 4%, rgba(255,255,255,0) 4.5%),
+        radial-gradient(circle at 85% 30%, rgba(255,255,255,.6) 0 6%, rgba(255,255,255,0) 6.5%),
+        radial-gradient(circle at 70% 75%, rgba(255,255,255,.55) 0 3%, rgba(255,255,255,0) 3.5%),
+        radial-gradient(circle at 25% 85%, rgba(255,255,255,.6) 0 5%, rgba(255,255,255,0) 5.5%),
+        linear-gradient(180deg, #5cc8ff 0%, #b8ecff 40%, #e4fbd0 80%, #b9f08c 100%);
+    background-attachment: fixed;
+     cursor: url('../images/cursor.cur'), auto;
+}
+
+::selection{
+    background: rgba(0, 160, 230, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+a{
+    text-decoration: none;
+    color: rgba(8, 84, 140, 1);
+    display: inline-block;
+}
+
+a:hover{
+    color: rgba(0, 150, 220, 1);
+}
+
+/*header*/
+header{
+    position: relative;     /* 手機版 .menu 以 header 為基準定位 */
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+/*logo*/
+.logo{
+    flex: 1;
+    text-align: center;
+}
+
+.logo img{
+    width: 8%;
+    padding: 10px;
+    filter: drop-shadow(0 4px 8px rgba(0, 140, 220, .45));
+}
+
+/*menu (漢堡按鈕：桌機隱藏)*/
+.menu{
+    display: none;
+}
+
+.menu svg{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/*nav*/
+nav{
+    flex: 0 0 100%;
+    text-align: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000000;
+
+    /* 水晶果凍導覽列 */
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.25) 50%, rgba(255,255,255,0) 51%),
+        linear-gradient(180deg, #4fc3ff 0%, #1f9fe6 100%);
+    border-bottom: 2px solid rgba(255,255,255,.9);
+    box-shadow: 0 6px 20px rgba(0, 120, 190, .35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    display: flex;
+    justify-content: center;
+}
+
+nav a{
+    flex: 0 0 10%;
+    padding: 15px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 3px rgba(0, 80, 140, .6);
+    transition: all .3s;
+}
+
+nav a:hover{
+    color: rgba(255, 255, 255, 1);
+    background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.05));
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 1);
+}
+
+/*swiper*/
+.swiper{
+    width: 100%;
+    height: 90vh;
+    background: rgba(255, 255, 255, .3);
+    border-radius: 0 0 48px 48px;
+    border-bottom: 4px solid rgba(255,255,255,.9);
+    box-shadow: var(--shadow);
+    --swiper-navigation-color: #fff;
+    --swiper-pagination-color: rgba(120, 235, 90, 1);
+    --swiper-pagination-bullet-inactive-color: #fff;
+    --swiper-pagination-bullet-inactive-opacity: .7;
+}
+
+.swiper-slide{
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.swiper-slide img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 玻璃反光 */
+.swiper-slide::after{
+    content: "";
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 45%;
+    background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0));
+    pointer-events: none;
+}
+
+.slide-title{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    font-size: clamp(48px, 10vw, 150px);
+    font-weight: 900;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 1);
+    text-shadow:
+        0 0 20px rgba(0, 180, 255, 1),
+        0 6px 18px rgba(0, 110, 180, .6);
+    z-index: 2;
+}
+
+/* 泡泡分頁點 */
+.swiper-pagination-bullet{
+    width: 20px;
+    height: 20px;
+    opacity: .7;
+    background: radial-gradient(circle at 30% 30%, #fff 0 25%, rgba(255,255,255,.4) 60%);
+    border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 2px 6px rgba(0, 120, 190, .4);
+}
+
+.swiper-pagination-bullet-active{
+    opacity: 1;
+    background: radial-gradient(circle at 30% 30%, #fff 0 20%, rgba(120, 235, 90, 1) 65%);
+}
+
+/*section*/
+section{
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+section h1{
+    flex: 0 0 100%;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    text-shadow: 0 0 14px rgba(0, 170, 255, 1), 0 3px 8px rgba(0, 100, 160, .5);
+}
+
+/*article*/
+article{
+    position: relative;
+    flex: 1;
+    height: auto;
+    min-height: 450px;
+    overflow: hidden;
+
+    background: var(--glass);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border: solid 2px var(--glass-border);
+    border-radius: 28px 0 0 28px;
+    box-shadow: var(--shadow), inset 0 0 30px rgba(255,255,255,.5);
+}
+
+/* 上半部高光 */
+article::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 40%;
+    background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+    pointer-events: none;
+    z-index: 2;
+}
+
+/*content*/
+.content{
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 450px;
+
+    display: flex;
+}
+
+.a_left{
+    flex: 2;
+    padding: 4%;
+    box-sizing: border-box;
+}
+
+.a_right{
+    flex: 1;
+    padding: 4%;
+    box-sizing: border-box;
+    color: rgba(8, 84, 140, 1);
+    text-align: left;
+    line-height: 2rem;
+}
+
+.a_right h2{
+    color: rgba(0, 140, 215, 1);
+    text-shadow: 0 2px 6px rgba(255,255,255,.9);
+}
+
+.a_left img, .a_right img{
+    float: left;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 3px solid rgba(255,255,255,.9);
+    box-shadow: 0 8px 22px rgba(0, 120, 190, .35);
+}
+
+/*aside*/
+aside{
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+aside .list{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: all .3s;
+
+    /* 果凍按鈕 */
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,.35) 50%, rgba(150,225,255,.45) 51%, rgba(255,255,255,.65) 100%);
+    border-top: solid 2px rgba(255,255,255,.95);
+    border-right: solid 2px rgba(255,255,255,.95);
+    border-bottom: solid 2px rgba(255,255,255,.95);
+    border-radius: 0 28px 28px 0;
+    box-shadow: inset 0 -6px 14px rgba(0, 170, 240, .25);
+}
+
+.list:hover{
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.8) 0%, rgba(255,255,255,.2) 50%, rgba(40,185,255,.75) 51%, rgba(120,225,255,.9) 100%);
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 4px rgba(0, 100, 170, .7);
+    cursor: pointer;
+}
+
+.ch_bg{
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.25) 50%, rgba(60,190,60,.75) 51%, rgba(140,235,90,.95) 100%) !important;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 4px rgba(20, 110, 20, .7);
+}
+
+/*totop*/
+.totopbt{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000000;
+}
+
+.totopbt a{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    background: radial-gradient(circle at 30% 25%, #fff 0 12%, rgba(255,255,255,0) 30%),
+                linear-gradient(180deg, #5cd0ff, #1593dc);
+    border: 2px solid rgba(255,255,255,.95);
+    box-shadow: 0 6px 16px rgba(0, 120, 190, .5);
+    color: rgba(255, 255, 255, 1);
+}
+
+.totopbt a:hover{
+    background: radial-gradient(circle at 30% 25%, #fff 0 12%, rgba(255,255,255,0) 30%),
+                linear-gradient(180deg, #9af070, #3fb82e);
+    color: rgba(255, 255, 255, 1);
+}
+
+/*footer*/
+footer{
+    clear: both;
+    width: 100%;
+    padding: 50px 0px;
+    text-align: center;
+    margin-top: 40px;
+    color: rgba(8, 84, 140, 1);
+    background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.55));
+}
+
+/*for tablets*/
+@media only screen and (max-width: 1200px) {
+}
+
+/*for mobile*/
+@media only screen and (max-width: 768px) {
+
+    /*logo*/
+    .logo img{
+        width: 30%;
+    }
+
+    /*menu*/
+    .menu{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 12%;
+        display: block;
+    }
+
+    .menu:hover{
+        cursor: pointer;
+    }
+
+    /*nav*/
+    nav{
+        flex-direction: column;
+    }
+
+    nav a{
+        border-top: solid 1px rgba(255, 255, 255, .7);
+    }
+
+    /*swiper*/
+    .swiper{
+        height: 70vh;
+        border-radius: 0 0 32px 32px;
+    }
+
+    /*section*/
+    section{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /*aside*/
+    aside{
+        order: 1;
+        flex-direction: row;
+        flex: 0 0 50px;
+    }
+
+    aside .list{
+        border-top: solid 2px rgba(255,255,255,.95);
+        border-right: solid 2px rgba(255,255,255,.95);
+        border-bottom: solid 0px rgba(255,255,255,.95);
+        border-left: solid 2px rgba(255,255,255,.95);
+        border-radius: 16px 16px 0 0;
+    }
+
+    /*article*/
+    article{
+        order: 2;
+        height: auto;
+        flex: none;
+        overflow: hidden;
+        border-radius: 0 0 28px 28px;
+    }
+
+    /*content*/
+    .content{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .a_left img, .a_right img{
+        height: auto;
+    }
+
+    .a_left, .a_right{
+        flex: none;
+    }
+
+    .a_right{
+        padding: 6%;
+    }
+
+    .a_right h2{
+        font-size: 2rem;
+    }
+}
+
+
+/*mouse：自訂游標圖片（圖片放在 images/ 資料夾）*/
+:root{
+    --cursor: url('../images/cursor.cur') 0 0, auto;          /* 一般游標：熱點(0 0)＝圖片左上角 */
+    --cursor-hover: url('../images/cursor-hover.cur') 0 0, pointer;   /* 可點擊游標 */
+}
+
+body{
+    cursor: var(--cursor);
+}
+
+a, nav a, .list, .list:hover, .menu, .menu:hover, .totopbt a,
+.swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet{
+    cursor: var(--cursor-hover);
+}
+
+/*mouse：泡泡軌跡*/
+.bubble-trail{
+    position: fixed;
+    z-index: 2000000;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95) 0 20%, rgba(120,215,255,.45) 60%, rgba(40,170,240,.6) 100%);
+    border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 0 8px rgba(80, 200, 255, .6);
+    animation: bubbleUp .9s ease-out forwards;
+}
+
+@keyframes bubbleUp{
+    0%   { opacity: .9; transform: translate(0, 0) scale(.6); }
+    100% { opacity: 0;  transform: translate(var(--dx, 0px), -60px) scale(1.4); }
+}
+
+/* 1. 讓動態產生的滑鼠泡泡不會干擾游標偵測 */
+.bubble-trail {
+    pointer-events: none;
+}
+
+/* 2. 全站預設自訂游標（優先使用 .cur，失敗時自動改用 .png） */
+html, body, div, section, article, img, h1, h2, p, footer, span {
+    cursor: url('../images/cursor.cur'), url('../images/cursor.png'), auto;
+}
+
+/* 3. 滑鼠移到連結、果凍按鈕、輪播箭頭與分頁點時，切換為 hover 游標 */
+a, 
+a *, 
+.list, 
+.list:hover, 
+.totopbt a, 
+.swiper-button-next, 
+.swiper-button-prev, 
+.swiper-pagination-bullet,
+.menu {
+    cursor: url('../images/cursor-hover.cur'), url('../images/cursor-hover.png'), pointer !important;
+}
